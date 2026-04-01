@@ -42,8 +42,19 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In production: send to API/email service
-    console.log("Form submitted:", formData);
+    const message = [
+      `שם: ${formData.name}`,
+      `טלפון: ${formData.phone}`,
+      formData.email ? `אימייל: ${formData.email}` : "",
+      formData.organization ? `ארגון: ${formData.organization}` : "",
+      formData.type ? `סוג סדנה: ${formData.type}` : "",
+      formData.message ? `פרטים: ${formData.message}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const whatsappUrl = `https://wa.me/972544943606?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     setSubmitted(true);
   };
 
@@ -58,7 +69,7 @@ export default function Contact() {
       <div className="relative max-w-7xl mx-auto px-4">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 1, y: 30 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
@@ -80,7 +91,7 @@ export default function Contact() {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Contact info */}
           <motion.div
-            initial={{ opacity: 1, x: -30 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
@@ -93,19 +104,21 @@ export default function Contact() {
                 </h3>
                 <div className="space-y-4">
                   <a
-                    href="tel:+972501234567"
+                    href="https://wa.me/972544943606"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-4 p-4 bg-green-50 rounded-xl border-2 border-green-200 hover:border-green-400 transition-colors"
                   >
                     <span className="text-3xl">📱</span>
                     <div>
-                      <div className="font-black text-gray-900">טלפון / WhatsApp</div>
+                      <div className="font-black text-gray-900">WhatsApp</div>
                       <div className="text-sm text-gray-500">
                         זמין ראשון-חמישי, 09:00-18:00
                       </div>
                     </div>
                   </a>
                   <a
-                    href="mailto:elad@creative-workshops.co.il"
+                    href="mailto:eladjak@gmail.com"
                     className="flex items-center gap-4 p-4 bg-blue-50 rounded-xl border-2 border-blue-200 hover:border-blue-400 transition-colors"
                   >
                     <span className="text-3xl">📧</span>
@@ -182,7 +195,7 @@ export default function Contact() {
 
           {/* Form */}
           <motion.div
-            initial={{ opacity: 1, x: 30 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}

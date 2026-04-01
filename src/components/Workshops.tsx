@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 
 const workshops = [
   {
@@ -79,7 +80,7 @@ const containerVariants: Variants = {
 };
 
 const cardVariants: Variants = {
-  hidden: { opacity: 1, y: 50 },
+  hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
@@ -93,7 +94,7 @@ export default function Workshops() {
       <div className="relative max-w-7xl mx-auto px-4">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 1, y: 30 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}

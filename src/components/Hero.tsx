@@ -46,7 +46,7 @@ export default function Hero() {
       <div className="relative max-w-7xl mx-auto px-4 py-24 grid lg:grid-cols-2 gap-12 items-center">
         {/* Text Content */}
         <motion.div
-          initial={{ opacity: 1, x: 60 }}
+          initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-white text-right"
@@ -107,7 +107,7 @@ export default function Hero() {
             ].map((stat, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 1, y: 20 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 + i * 0.1 }}
                 className="text-center"
@@ -123,7 +123,7 @@ export default function Hero() {
 
         {/* Hero Image */}
         <motion.div
-          initial={{ opacity: 1, scale: 0.8, rotate: -5 }}
+          initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           className="relative hidden lg:block"

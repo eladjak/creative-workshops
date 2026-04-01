@@ -138,7 +138,7 @@ export default function Gallery() {
       <div className="relative max-w-7xl mx-auto px-4">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 1, y: 30 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
@@ -169,7 +169,7 @@ export default function Gallery() {
 
         {/* Category filters */}
         <motion.div
-          initial={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           className="flex flex-wrap justify-center gap-3 mb-10"
@@ -194,7 +194,7 @@ export default function Gallery() {
           {filtered.map((item, index) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 1, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: index * 0.05, duration: 0.4 }}
@@ -235,7 +235,7 @@ export default function Gallery() {
 
         {/* Wide gallery image */}
         <motion.div
-          initial={{ opacity: 1, y: 20 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
@@ -252,7 +252,7 @@ export default function Gallery() {
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 1, y: 20 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}

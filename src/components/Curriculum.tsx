@@ -72,7 +72,7 @@ export default function Curriculum() {
           {/* Left: Curriculum tree */}
           <div>
             <motion.div
-              initial={{ opacity: 1, x: -30 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5 }}
@@ -99,7 +99,7 @@ export default function Curriculum() {
                 {treeNodes.map((node, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 1, x: -30 }}
+                    initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ delay: index * 0.15, duration: 0.4 }}
@@ -147,7 +147,7 @@ export default function Curriculum() {
           {/* Right: Credentials & Achievements */}
           <div>
             <motion.div
-              initial={{ opacity: 1, x: 30 }}
+              initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5 }}
@@ -169,7 +169,7 @@ export default function Curriculum() {
               {achievements.map((ach, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 1, scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ delay: i * 0.1, duration: 0.3 }}
@@ -185,7 +185,7 @@ export default function Curriculum() {
 
             {/* Highlight: Sipur Shel Avir */}
             <motion.div
-              initial={{ opacity: 1, y: 20 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
@@ -219,7 +219,7 @@ export default function Curriculum() {
 
             {/* Meir Channel */}
             <motion.div
-              initial={{ opacity: 1, y: 20 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}

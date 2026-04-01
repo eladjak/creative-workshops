@@ -85,8 +85,8 @@ export default function Footer() {
         </div>
 
         <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="h-px bg-gradient-to-l from-blue-600 via-pink-500 to-green-500 mb-6"
