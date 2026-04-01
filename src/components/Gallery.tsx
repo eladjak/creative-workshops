@@ -4,78 +4,93 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 
-// Gallery items representing Elad's 85+ original works from "מהראש אל הדף" blog
-// Mix of: real blog archive illustrations + Gemini-generated images
+// Gallery items - original works from "מהראש אל הדף" blog archive (OneDrive/meharoshelhadaf-archive)
 const galleryItems = [
   {
-    title: "סיפורו של אביר — פרק מקורי",
+    title: "עמוד קומיקס — אקשן",
     category: "קומיקס",
     image: "/images/gallery/illustration-1.jpg",
-    alt: "איור מקורי מהבלוג מהראש אל הדף — קומיקס מקורי מאת אלעד ג'ינו",
-    tag: "מקור לילדים",
-    description: "איור מקורי מסדרת הקומיקס שפורסמה ב׳מקור לילדים׳",
+    alt: "עמוד קומיקס מקורי בסגנון אקשן מאת אלעד ג'ינו",
+    tag: "מקורי",
+    description: "עמוד קומיקס צבעוני מלא — סצנת פעולה דינמית",
   },
   {
-    title: "בובת טלה — עיצוב דמות",
-    category: "איור",
+    title: "בתנועה מתמדת — קומיקס",
+    category: "קומיקס",
+    image: "/images/gallery/illustration-2.jpg",
+    alt: "קומיקס בתנועה מתמדת מאת אלעד יעקובוביץ'",
+    tag: "בני עקיבא",
+    description: "קומיקס מקורי לבני עקיבא — שחור-לבן עם דיאלוגים",
+  },
+  {
+    title: "יהל חזן — קריקטורה",
+    category: "קריקטורות",
+    image: "/images/gallery/illustration-3.jpg",
+    alt: "קריקטורה דיגיטלית של יהל חזן מאת אלעד",
+    tag: "קריקטורה",
+    description: "קריקטורה דיגיטלית — סדרת קריקטורות אישיות",
+  },
+  {
+    title: "רובו סמיילי — קומיקס",
+    category: "קומיקס",
     image: "/images/gallery/illustration-4.jpg",
-    alt: "עיצוב דמות מקורי בסגנון קומיקס — בובת טלה",
-    tag: "מקורי",
-    description: "עיצוב דמות מקורי — גרסה 4 עם כובע",
+    alt: "עמוד קומיקס רובו סמיילי — קומיקס צבעוני מקורי",
+    tag: "רובו סמיילי",
+    description: "עמוד מתוך סדרת רובו סמיילי — קומיקס חלל צבעוני",
+  },
+  {
+    title: "גלויה — סצנה מקורית",
+    category: "עיצוב",
+    image: "/images/gallery/illustration-5.jpg",
+    alt: "עיצוב גלויה מקורית — סצנה מסדרת הקומיקס",
+    tag: "עיצוב",
+    description: "עיצוב גלויה — סצנה מסדרת הקומיקס",
   },
   {
     title: "בובת תרנגול — גרסה 3",
     category: "איור",
-    image: "/images/gallery/illustration-5.jpg",
+    image: "/images/gallery/illustration-6.jpg",
     alt: "עיצוב בובת תרנגול מקורי — גרסה 3",
     tag: "מקורי",
     description: "עיצוב בובה מקורי — גרסת הודו בסגנון אמנות עממית",
   },
   {
-    title: "ביבי — שיר אלבום",
+    title: "בובת טלה — עיצוב דמות",
     category: "איור",
-    image: "/images/gallery/illustration-6.jpg",
-    alt: "איור מוזיקלי — ביבי מנשק לאלבומה",
-    tag: "מוזיקה",
-    description: "איור מקורי לשיר — עיצוב עטיפת אלבום",
+    image: "/images/gallery/illustration-7.jpg",
+    alt: "עיצוב דמות בובת טלה עם כובע",
+    tag: "מקורי",
+    description: "עיצוב דמות מקורי — גרסה 4 עם כובע",
+  },
+  {
+    title: "ביבי — איור סאטירי",
+    category: "קריקטורות",
+    image: "/images/gallery/illustration-8.jpg",
+    alt: "איור סאטירי מקורי מאת אלעד",
+    tag: "סאטירה",
+    description: "איור סאטירי — שילוב הומור ואמנות",
   },
   {
     title: "בית המקדש",
     category: "איור",
-    image: "/images/gallery/illustration-7.jpg",
-    alt: "איור בית המקדש הראשון — ציור היסטורי",
-    tag: "מקורי",
-    description: "בית המקדש הראשון — איור היסטורי-אמנותי",
-  },
-  {
-    title: "גלויה חדשה — סצנה",
-    category: "עיצוב",
-    image: "/images/gallery/illustration-8.jpg",
-    alt: "עיצוב גלויה מקורית — סצנה מהספר",
-    tag: "עיצוב",
-    description: "עיצוב גלויה — סצנה מסדרת הקומיקס",
-  },
-  {
-    title: "גמד — עיצוב מקורי",
-    category: "קומיקס",
     image: "/images/gallery/illustration-9.jpg",
-    alt: "דמות גמד — סקיצה ראשונה של הדמות",
+    alt: "איור בית המקדש — ציור היסטורי מאת אלעד",
     tag: "מקורי",
-    description: "סקיצה ראשונה של דמות הגמד — שלב העיצוב",
+    description: "בית המקדש — איור היסטורי-אמנותי",
   },
   {
-    title: "יהל חזן — קריקטורה",
-    category: "קריקטורות",
+    title: "גפילטע פיכס — סקיצה",
+    category: "קומיקס",
     image: "/images/gallery/illustration-10.jpg",
-    alt: "קריקטורה של יהל חזן — קריקטורה דיגיטלית מאת אלעד",
-    tag: "קריקטורה",
-    description: "קריקטורה דיגיטלית — סדרת קריקטורות אישיות",
+    alt: "סקיצה ראשונה של דמות גפילטע פיכס",
+    tag: "מקורי",
+    description: "סקיצה ראשונה — שלב העיצוב הראשוני של הדמות",
   },
   {
     title: "הדס נסיכה — עיצוב",
     category: "איור",
     image: "/images/gallery/illustration-11.jpg",
-    alt: "עיצוב דמות הדס נסיכה",
+    alt: "עיצוב דמות הדס נסיכה מאת אלעד",
     tag: "מקורי",
     description: "עיצוב דמות הדס — נסיכה מקורית",
   },
@@ -152,8 +167,8 @@ export default function Gallery() {
             <span className="text-pink-500">מקוריות</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-            כל העבודות מבלוג &quot;מהראש אל הדף&quot; — קומיקסים, איורים,
-            קריקטורות ועוד. כולן נוצרו ישירות על ידי אלעד ג&apos;ינו.
+            מבחר עבודות מקוריות מבלוג &quot;מהראש אל הדף&quot; — קומיקסים, איורים,
+            קריקטורות ועוד. כולן נוצרו ישירות על ידי אלעד יעקובוביץ&apos;.
           </p>
 
           {/* Blog link */}
