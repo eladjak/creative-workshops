@@ -66,3 +66,18 @@ body {
   background-image: radial-gradient(circle, #00000010 1px, transparent 1px);
   background-size: 8px 8px;
 }
+
+/* Global focus-visible for accessibility */
+:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}

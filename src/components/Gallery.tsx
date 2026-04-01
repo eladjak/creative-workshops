@@ -173,12 +173,15 @@ export default function Gallery() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           className="flex flex-wrap justify-center gap-3 mb-10"
+          role="group"
+          aria-label="סינון לפי קטגוריה"
         >
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full font-bold text-sm transition-all comic-border-sm ${
+              aria-pressed={activeCategory === cat}
+              className={`px-4 py-2 rounded-full font-bold text-sm transition-all comic-border-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${
                 activeCategory === cat
                   ? "bg-pink-500 text-white scale-105"
                   : "bg-white text-gray-700 hover:bg-pink-50"

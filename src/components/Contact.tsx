@@ -149,7 +149,7 @@ export default function Contact() {
               </div>
 
               {/* Pricing teaser */}
-              <div className="bg-gradient-to-br from-blue-600 to-purple-700 rounded-2xl comic-border text-white p-6">
+              <div className="bg-blue-600 rounded-2xl comic-border text-white p-6">
                 <h3 className="font-black text-xl mb-4">💰 מחירים</h3>
                 <div className="space-y-3 text-sm">
                   {[

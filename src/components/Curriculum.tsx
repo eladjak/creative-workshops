@@ -189,7 +189,7 @@ export default function Curriculum() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-gradient-to-br from-blue-600 to-purple-700 rounded-2xl comic-border text-white p-6"
+              className="bg-blue-600 rounded-2xl comic-border text-white p-6"
             >
               <div className="flex items-start gap-4">
                 <div className="text-5xl">📖</div>
