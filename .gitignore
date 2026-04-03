@@ -42,3 +42,5 @@ next-env.d.ts
 
 .vercel
 .npmrc
+public/favicon-source.jpg
+public/workshop-scene.jpg
