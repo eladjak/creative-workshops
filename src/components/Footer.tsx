@@ -19,7 +19,7 @@ export default function Footer() {
               </div>
               <div>
                 <div className="font-black text-lg">סדנאות יצירה</div>
-                <div className="text-xs text-gray-400">אלעד ג&apos;ינו</div>
+                <div className="text-xs text-gray-400">אלעד יעקובוביץ&apos;</div>
               </div>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
@@ -94,7 +94,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
           <div>
-            © {currentYear} אלעד ג&apos;ינו — סדנאות יצירה. כל הזכויות שמורות.
+            © {currentYear} אלעד יעקובוביץ&apos; — סדנאות יצירה. כל הזכויות שמורות.
           </div>
           <div className="flex items-center gap-4">
             <span className="text-blue-500">📖 קומיקס</span>

@@ -65,7 +65,7 @@ export default function Navbar() {
             href="#contact"
             className="mr-2 px-4 py-2 bg-yellow-400 text-gray-900 font-black rounded-lg comic-border-sm hover:bg-yellow-300 transition-colors text-sm"
           >
-            קבל הצעה מחיר
+            קבלו הצעת מחיר
           </a>
         </div>
 
@@ -114,7 +114,7 @@ export default function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className="mt-2 px-4 py-3 bg-yellow-400 text-gray-900 font-black rounded-lg comic-border-sm text-center"
               >
-                קבל הצעה מחיר
+                קבלו הצעת מחיר
               </a>
             </div>
           </motion.div>

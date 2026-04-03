@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
+import Lightbox from "./Lightbox";
 
 // Gallery items - original works from "מהראש אל הדף" blog archive (OneDrive/meharoshelhadaf-archive)
 const galleryItems = [
@@ -140,6 +141,7 @@ const categories = ["הכל", "קומיקס", "איור", "קריקטורות", 
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState("הכל");
+  const [lightboxItem, setLightboxItem] = useState<typeof galleryItems[number] | null>(null);
 
   const filtered =
     activeCategory === "הכל"
@@ -218,6 +220,7 @@ export default function Gallery() {
               transition={{ delay: index * 0.05, duration: 0.4 }}
               whileHover={{ y: -5, transition: { duration: 0.15 } }}
               className="group bg-white rounded-xl comic-border overflow-hidden cursor-pointer"
+              onClick={() => setLightboxItem(item)}
             >
               {/* Real image */}
               <div className="aspect-square relative overflow-hidden bg-gray-100">
@@ -293,6 +296,15 @@ export default function Gallery() {
           </div>
         </motion.div>
       </div>
+
+      {lightboxItem && (
+        <Lightbox
+          image={lightboxItem.image}
+          alt={lightboxItem.alt}
+          title={lightboxItem.title}
+          onClose={() => setLightboxItem(null)}
+        />
+      )}
     </section>
   );
 }

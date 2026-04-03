@@ -74,7 +74,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-xl text-blue-100 mb-8 max-w-xl leading-relaxed">
-            סדנאות יצירתיות מקצועיות לבתי ספר, חוגים ואירועים. עם אלעד ג&apos;ינו
+            סדנאות יצירתיות מקצועיות לבתי ספר, חוגים ואירועים. עם אלעד יעקובוביץ&apos;
             — מאייר &quot;סיפורו של אביר&quot; שפורסם ב&quot;מקור לילדים&quot; ובעל 85+ עבודות מקוריות.
           </p>
 
@@ -126,7 +126,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          className="relative hidden lg:block"
+          className="relative"
         >
           <div className="relative rounded-2xl overflow-hidden comic-border bg-white">
             <Image
