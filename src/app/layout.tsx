@@ -83,6 +83,11 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <script
+          defer
+          data-domain="workshops.eladjak.com"
+          src="https://plausible.io/js/script.js"
+        />
       </head>
       <body className={`${heebo.variable} font-heebo antialiased bg-white`}>
         <a
