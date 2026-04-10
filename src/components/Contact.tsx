@@ -153,9 +153,9 @@ export default function Contact() {
                 <h3 className="font-black text-xl mb-4">💰 מחירים</h3>
                 <div className="space-y-3 text-sm">
                   {[
-                    { label: "סדנה בודדת (90 דקות)", price: "₪800-1,200" },
-                    { label: "תכנית שנתית לחוג (×10)", price: "בהתאמה אישית" },
-                    { label: "אירוע מיוחד", price: "מתחיל מ-₪600" },
+                    { label: "סדנה בודדת (90 דקות)", price: "החל מ-₪1,000" },
+                    { label: "תכנית לחוג (8 מפגשים)", price: "החל מ-₪4,500" },
+                    { label: "אירוע / יום הולדת", price: "החל מ-₪900" },
                   ].map((item, i) => (
                     <div
                       key={i}
