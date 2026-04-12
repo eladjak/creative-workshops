@@ -1,3 +1,11 @@
+<div align="center">
+
+⭐ If you find this project useful, please star it! ⭐
+
+[🇮🇱 עברית](README.he.md)
+
+</div>
+
 # Creative Workshops
 
 A landing page for creative workshops for kids -- comics, illustration, and animation. Features a colorful Hebrew RTL design with smooth animations and a mobile-first responsive layout.
