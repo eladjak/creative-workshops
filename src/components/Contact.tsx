@@ -104,7 +104,7 @@ export default function Contact() {
                 </h3>
                 <div className="space-y-4">
                   <a
-                    href="https://wa.me/972544943606"
+                    href="https://wa.me/972544943606?text=שלום%2C%20פניתי%20דרך%20אתר%20סדנאות%20היצירה%20%28קומיקס%2Fאיור%2Fאנימציה%29"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-4 p-4 bg-green-50 rounded-xl border-2 border-green-200 hover:border-green-400 transition-colors"
