@@ -24,6 +24,9 @@ const ForWho = dynamic(() => import("@/components/ForWho"), {
 const Testimonials = dynamic(() => import("@/components/Testimonials"), {
   loading: SectionLoader,
 });
+const FAQChat = dynamic(() => import("@/components/FAQChat"), {
+  loading: SectionLoader,
+});
 const Contact = dynamic(() => import("@/components/Contact"), {
   loading: SectionLoader,
 });
@@ -39,6 +42,7 @@ export default function Home() {
       <Curriculum />
       <ForWho />
       <Testimonials />
+      <FAQChat />
       <Contact />
       <Footer />
       <WhatsAppButton />
