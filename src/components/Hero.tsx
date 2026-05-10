@@ -61,15 +61,14 @@ export default function Hero() {
             ⭐ כפי שנראה בערוץ מאיר ⭐
           </motion.div>
 
-          <h1 className="text-5xl lg:text-7xl font-black leading-tight mb-6">
-            <span className="text-yellow-400">קומיקס</span>
+          <h1 className="text-5xl lg:text-7xl font-black leading-tight mb-6 text-balance">
+            <span className="text-yellow-400">מהראש</span>
             <br />
-            <span className="text-pink-300">איור</span>
-            {" & "}
-            <span className="text-green-300">אנימציה</span>
+            <span className="text-pink-300">אל</span>{" "}
+            <span className="text-green-300">הדף</span>
             <br />
-            <span className="text-white text-4xl lg:text-5xl">
-              לילדים שאוהבים ליצור!
+            <span className="text-white text-3xl lg:text-4xl block mt-3">
+              סדנאות קומיקס, איור ואנימציה לילדים שאוהבים ליצור!
             </span>
           </h1>
 
