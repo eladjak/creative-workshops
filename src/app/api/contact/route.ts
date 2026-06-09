@@ -46,7 +46,7 @@ export async function POST(request: Request) {
         from:
           process.env.RESEND_FROM ??
           "סדנאות יצירה <creative@eladjak.com>",
-        to: process.env.CONTACT_EMAIL ?? "eladjak@gmail.com",
+        to: process.env.CONTACT_EMAIL ?? "eladjak.agents@gmail.com",
         subject: `פנייה חדשה מ${body.name} — סדנאות קומיקס/איור/אנימציה`,
         html: emailHtml,
         replyTo: body.email || undefined,
