@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const navLinks = [
   { href: "#workshops", label: "סדנאות" },
   { href: "#gallery", label: "גלריה" },
+  { href: "#workshop-photos", label: "מהשטח" },
   { href: "#curriculum", label: "תכנית לימודים" },
   { href: "#for-who", label: "למי מתאים" },
   { href: "#testimonials", label: "המלצות" },

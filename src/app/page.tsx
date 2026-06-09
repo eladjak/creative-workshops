@@ -15,6 +15,9 @@ const Workshops = dynamic(() => import("@/components/Workshops"), {
 const Gallery = dynamic(() => import("@/components/Gallery"), {
   loading: SectionLoader,
 });
+const WorkshopPhotos = dynamic(() => import("@/components/WorkshopPhotos"), {
+  loading: SectionLoader,
+});
 const Curriculum = dynamic(() => import("@/components/Curriculum"), {
   loading: SectionLoader,
 });
@@ -39,6 +42,7 @@ export default function Home() {
       <Hero />
       <Workshops />
       <Gallery />
+      <WorkshopPhotos />
       <Curriculum />
       <ForWho />
       <Testimonials />

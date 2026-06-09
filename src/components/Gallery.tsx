@@ -5,143 +5,230 @@ import { useState } from "react";
 import Image from "next/image";
 import Lightbox from "./Lightbox";
 
-// Gallery items - original works from "מהראש אל הדף" blog archive (OneDrive/meharoshelhadaf-archive)
+// Gallery items — REAL original works scraped from the "מהראש אל הדף" blog
+// (meharoshelhadaf.blogspot.com). 121 works archived; this is the curated selection.
 const galleryItems = [
+  // ---- קומיקס ----
   {
-    title: "עמוד קומיקס — אקשן",
+    title: "סיפורו של אביר — קומיקס",
     category: "קומיקס",
-    image: "/images/gallery/illustration-1.jpg",
-    alt: "עמוד קומיקס מקורי בסגנון אקשן מאת אלעד יעקובוביץ'",
+    image: "/images/archive/comic-page-color-1.jpg",
+    alt: "עמוד קומיקס צבעוני מסדרת 'סיפורו של אביר' מאת אלעד יעקובוביץ'",
+    tag: "מקור לילדים",
+    description: "עמוד מתוך הסדרה שהתפרסמה בעיתון 'מקור לילדים'",
+  },
+  {
+    title: "סיפורו של אביר — עמוד עלילה",
+    category: "קומיקס",
+    image: "/images/archive/comic-page-color-2.jpg",
+    alt: "עמוד עלילה צבעוני מסדרת 'סיפורו של אביר'",
+    tag: "מקור לילדים",
+    description: "עמוד עלילה מלא — מתוך סדרת הקומיקס המתמשכת",
+  },
+  {
+    title: "ארמדיל — קומיקס בריאות",
+    category: "קומיקס",
+    image: "/images/archive/comic-armadillo.jpg",
+    alt: "קטע קומיקס בנושא בריאות שאוייר לקבוצת 'ארמדיל'",
+    tag: "פרסומי ישראל",
+    description: "קומיקס לילדים בנושא בריאות — בהזמנת 'פרסומי ישראל'",
+  },
+  {
+    title: "רובו סמיילי — קומיקס מד״ב",
+    category: "קומיקס",
+    image: "/images/archive/comic-robo-smiley.jpg",
+    alt: "קטע מקומיקס מדע בדיוני-קומדיה בשם 'רובו סמיילי'",
     tag: "מקורי",
-    description: "עמוד קומיקס צבעוני מלא — סצנת פעולה דינמית",
+    description: "מתוך 'רובו סמיילי' — קומיקס מדע בדיוני וקומדיה",
   },
   {
-    title: "בתנועה מתמדת — קומיקס",
+    title: "רדיקס — הרפתקה בין-מימדית",
     category: "קומיקס",
-    image: "/images/gallery/illustration-2.jpg",
-    alt: "קומיקס בתנועה מתמדת מאת אלעד יעקובוביץ'",
-    tag: "בני עקיבא",
-    description: "קומיקס מקורי לבני עקיבא — שחור-לבן עם דיאלוגים",
+    image: "/images/archive/comic-redix-1.jpg",
+    alt: "קטע מקומיקס הרפתקאות בין-מימדיות בשם 'רדיקס'",
+    tag: "מקורי",
+    description: "מתוך 'רדיקס' — הרפתקה בדיונית בין-מימדית",
   },
   {
-    title: "יהל חזן — קריקטורה",
+    title: "קומיקס לבני עקיבא",
+    category: "קומיקס",
+    image: "/images/archive/comic-bnei-akiva.jpg",
+    alt: "עמוד קומיקס שפורסם בעלון תנועת נוער",
+    tag: "תנועות נוער",
+    description: "עמוד קומיקס שפורסם בעלון תנועת נוער",
+  },
+  // ---- איור ----
+  {
+    title: "סיפורו של אביר — שער",
+    category: "איור",
+    image: "/images/archive/book-knight-cover.jpg",
+    alt: "איור שער מסדרת 'סיפורו של אביר' מאת אלעד יעקובוביץ'",
+    tag: "מקור לילדים",
+    description: "איור שער — מתוך 42 איורי הסדרה לכל הפרקים",
+  },
+  {
+    title: "איור לספר — פרק",
+    category: "איור",
+    image: "/images/archive/book-knight-1.jpg",
+    alt: "איור פרק מתוך סדרת 'סיפורו של אביר'",
+    tag: "איור ספר",
+    description: "איור מלא לפרק מתוך הסדרה",
+  },
+  {
+    title: "איור לסיפור ילדים",
+    category: "איור",
+    image: "/images/archive/book-knight-2.jpg",
+    alt: "איור צבעוני לסיפור ילדים מאת אלעד",
+    tag: "איור ספר",
+    description: "איור לסיפור ילדים — צבע ודמיון",
+  },
+  {
+    title: "איור עלילה",
+    category: "איור",
+    image: "/images/archive/book-knight-3.jpg",
+    alt: "איור עלילה מתוך סדרת איורים לספר",
+    tag: "איור ספר",
+    description: "איור עלילה מתוך הסדרה",
+  },
+  {
+    title: "איור פרק — סצנה",
+    category: "איור",
+    image: "/images/archive/book-knight-4.jpg",
+    alt: "איור סצנה מתוך פרק בספר ילדים",
+    tag: "איור ספר",
+    description: "סצנה מאוירת מתוך פרק",
+  },
+  {
+    title: "איור רחב — נוף",
+    category: "איור",
+    image: "/images/archive/book-knight-wide.jpg",
+    alt: "איור נוף רחב מתוך סדרת הספר",
+    tag: "איור ספר",
+    description: "איור נוף בפורמט רחב",
+  },
+  // ---- קריקטורות ----
+  {
+    title: "קריקטורה אישית",
     category: "קריקטורות",
-    image: "/images/gallery/illustration-3.jpg",
-    alt: "קריקטורה דיגיטלית של יהל חזן מאת אלעד",
-    tag: "קריקטורה",
-    description: "קריקטורה דיגיטלית — סדרת קריקטורות אישיות",
+    image: "/images/archive/caricature-person-1.jpg",
+    alt: "קריקטורה דיגיטלית אישית שאוירה באירוע",
+    tag: "אירוע",
+    description: "קריקטורה דיגיטלית של אדם — אוירה ישירות באירוע",
   },
   {
-    title: "רובו סמיילי — קומיקס",
-    category: "קומיקס",
-    image: "/images/gallery/illustration-4.jpg",
-    alt: "עמוד קומיקס רובו סמיילי — קומיקס צבעוני מקורי",
-    tag: "רובו סמיילי",
-    description: "עמוד מתוך סדרת רובו סמיילי — קומיקס חלל צבעוני",
+    title: "קריקטורה באירוע",
+    category: "קריקטורות",
+    image: "/images/archive/caricature-person-2.jpg",
+    alt: "קריקטורה דיגיטלית חיה שאוירה במהלך אירוע",
+    tag: "אירוע",
+    description: "איור חי על מסך — מול האורחים בזמן אמת",
   },
   {
-    title: "גלויה — סצנה מקורית",
+    title: "קריקטורה — דיוקן",
+    category: "קריקטורות",
+    image: "/images/archive/caricature-person-3.jpg",
+    alt: "דיוקן קריקטורה דיגיטלי אישי",
+    tag: "אירוע",
+    description: "דיוקן קריקטורה אישי — בסגנון חם והומוריסטי",
+  },
+  {
+    title: "קריקטורה תקשורתית — קמפיין",
+    category: "קריקטורות",
+    image: "/images/archive/caricature-media-1.jpg",
+    alt: "קריקטורה תקשורתית בעלת אופי בוגר שזכתה לפרסום",
+    tag: "תקשורת",
+    description: "קריקטורה תקשורתית — מתוך עבודות שזכו לפרסום",
+  },
+  {
+    title: "איור למאמר עיתונאי",
+    category: "קריקטורות",
+    image: "/images/archive/caricature-media-2.jpg",
+    alt: "איור למאמר במוסף יומן של מקור ראשון",
+    tag: "מקור ראשון",
+    description: "איור למאמר במוסף 'יומן' של מקור ראשון",
+  },
+  {
+    title: "קריקטורה פוליטית",
+    category: "קריקטורות",
+    image: "/images/archive/caricature-media-3.jpg",
+    alt: "קריקטורה תקשורתית בעלת מסר חברתי",
+    tag: "תקשורת",
+    description: "קריקטורה בעלת אופי בוגר ומסר חברתי",
+  },
+  // ---- עיצוב דמויות / בובות ----
+  {
+    title: "עיצוב בובה — קונספט",
     category: "עיצוב",
-    image: "/images/gallery/illustration-5.jpg",
-    alt: "עיצוב גלויה מקורית — סצנה מסדרת הקומיקס",
-    tag: "עיצוב",
-    description: "עיצוב גלויה — סצנה מסדרת הקומיקס",
+    image: "/images/archive/puppet-concept-1.jpg",
+    alt: "איור קונספט מקורי לעיצוב בובת הפעלה",
+    tag: "עיצוב דמות",
+    description: "איור קונספט לבובת הפעלה — עיצוב דמות מקורי",
   },
   {
-    title: "בובת תרנגול — גרסה 3",
-    category: "איור",
-    image: "/images/gallery/illustration-6.jpg",
-    alt: "עיצוב בובת תרנגול מקורי — גרסה 3",
-    tag: "מקורי",
-    description: "עיצוב בובה מקורי — גרסת הודו בסגנון אמנות עממית",
+    title: "עיצוב בובה — דמות",
+    category: "עיצוב",
+    image: "/images/archive/puppet-concept-2.jpg",
+    alt: "עיצוב דמות בובה צבעוני ומקורי",
+    tag: "עיצוב דמות",
+    description: "עיצוב דמות בובה — צבעוני ומלא חיים",
   },
   {
-    title: "בובת טלה — עיצוב דמות",
-    category: "איור",
-    image: "/images/gallery/illustration-7.jpg",
-    alt: "עיצוב דמות בובת טלה עם כובע",
-    tag: "מקורי",
-    description: "עיצוב דמות מקורי — גרסה 4 עם כובע",
+    title: "עיצוב בובה — סדרה",
+    category: "עיצוב",
+    image: "/images/archive/puppet-concept-3.jpg",
+    alt: "עיצוב דמות מתוך סדרת בובות לטלוויזיה",
+    tag: "עיצוב דמות",
+    description: "דמות מתוך סדרת עיצובים להפקה טלוויזיונית",
   },
   {
-    title: "ביבי — איור סאטירי",
-    category: "קריקטורות",
-    image: "/images/gallery/illustration-8.jpg",
-    alt: "איור סאטירי מקורי מאת אלעד",
-    tag: "סאטירה",
-    description: "איור סאטירי — שילוב הומור ואמנות",
+    title: "הרשל׳ה — דמות",
+    category: "עיצוב",
+    image: "/images/archive/puppet-herschel.jpg",
+    alt: "עיצוב דמות 'הרשל'ה' לאתר ילדים",
+    tag: "עיצוב דמות",
+    description: "'הרשל'ה' — דמות שעוצבה לאתר ילדים",
+  },
+  // ---- תפאורה לתיאטרון ----
+  {
+    title: "תפאורה — בית המקדש",
+    category: "תפאורה",
+    image: "/images/archive/scenery-temple.jpg",
+    alt: "איור תפאורה של בית המקדש להצגת תיאטרון",
+    tag: "תיאטרון סצנה",
+    description: "איור תפאורה 'בית המקדש' — עבור תיאטרון 'סצנה'",
   },
   {
-    title: "בית המקדש",
-    category: "איור",
-    image: "/images/gallery/illustration-9.jpg",
-    alt: "איור בית המקדש — ציור היסטורי מאת אלעד",
-    tag: "מקורי",
-    description: "בית המקדש — איור היסטורי-אמנותי",
+    title: "תפאורה — מעבדה",
+    category: "תפאורה",
+    image: "/images/archive/scenery-lab.jpg",
+    alt: "איור תפאורה של מעבדה מתוך 'צוות תעלומה'",
+    tag: "תיאטרון סצנה",
+    description: "מעבדת פרופ' נורמן — מתוך 'צוות תעלומה'",
   },
   {
-    title: "גפילטע פיכס — סקיצה",
-    category: "קומיקס",
-    image: "/images/gallery/illustration-10.jpg",
-    alt: "סקיצה ראשונה של דמות גפילטע פיכס",
-    tag: "מקורי",
-    description: "סקיצה ראשונה — שלב העיצוב הראשוני של הדמות",
-  },
-  {
-    title: "הדס נסיכה — עיצוב",
-    category: "איור",
-    image: "/images/gallery/illustration-11.jpg",
-    alt: "עיצוב דמות הדס נסיכה מאת אלעד",
-    tag: "מקורי",
-    description: "עיצוב דמות הדס — נסיכה מקורית",
-  },
-  {
-    title: "הרשלה כותב",
-    category: "קומיקס",
-    image: "/images/gallery/illustration-12.jpg",
-    alt: "הרשלה כותב — דמות קומיקס מקורית",
-    tag: "מקורי",
-    description: "הרשלה כותב — דמות מסדרת הקומיקסים",
-  },
-  {
-    title: "סדנת ציור בפעולה",
-    category: "סדנאות",
-    image: "/images/workshop-illustration.jpg",
-    alt: "ילדים לומדים ציור קומיקס בסדנה יצירתית",
-    tag: "סדנה",
-    description: "סדנת ציור לילדים — אווירה חמה ויצירתית",
-  },
-  {
-    title: "שולחן אמן — עבודות",
-    category: "איור",
-    image: "/images/comic-art-desk.jpg",
-    alt: "שולחן עבודה אמן עם איורים, קומיקסים ועיפרונות",
-    tag: "מקורי",
-    description: "מבט על שולחן האמן — יצירות ואיורים מקוריים",
-  },
-  {
-    title: "סדנת קומיקס לילדים",
-    category: "סדנאות",
-    image: "/images/kids-workshop.jpg",
-    alt: "ילדים ונוער יוצרים קומיקסים ביחד בסדנה",
-    tag: "סדנה",
-    description: "ילדים יוצרים קומיקסים ביחד — חוויה קבוצתית",
-  },
-  {
-    title: "פרקי עלילה — אנימציה",
-    category: "אנימציה",
-    image: "/images/animation-storyboard.jpg",
-    alt: "פרקי עלילה לאנימציה עם עיצוב דמויות צבעוני",
-    tag: "אנימציה",
-    description: "תכנון אנימציה — פרקי עלילה ועיצוב דמויות",
+    title: "תפאורה — רחוב ירושלמי",
+    category: "תפאורה",
+    image: "/images/archive/scenery-street.jpg",
+    alt: "איור תפאורה של רחוב ירושלמי טיפוסי",
+    tag: "תיאטרון סצנה",
+    description: "רחוב ירושלמי טיפוסי — איור תפאורה להצגה",
   },
 ];
 
-const categories = ["הכל", "קומיקס", "איור", "קריקטורות", "עיצוב", "אנימציה", "סדנאות"];
+const categories = [
+  "הכל",
+  "קומיקס",
+  "איור",
+  "קריקטורות",
+  "עיצוב",
+  "תפאורה",
+];
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState("הכל");
-  const [lightboxItem, setLightboxItem] = useState<typeof galleryItems[number] | null>(null);
+  const [lightboxItem, setLightboxItem] = useState<
+    (typeof galleryItems)[number] | null
+  >(null);
 
   const filtered =
     activeCategory === "הכל"
@@ -162,26 +249,18 @@ export default function Gallery() {
           className="text-center mb-12"
         >
           <div className="inline-flex items-center gap-2 bg-pink-100 text-pink-700 px-4 py-2 rounded-full font-bold text-sm mb-4">
-            🖼️ גלריית עבודות
+            🖼️ מהבלוג — גלריית עבודות
           </div>
-          <h2 className="text-4xl lg:text-5xl font-black text-gray-900 mb-4">
-            85+ עבודות{" "}
+          <h2 className="text-4xl lg:text-5xl font-black text-gray-900 mb-4 text-balance">
+            יותר מ-120 עבודות{" "}
             <span className="text-pink-500">מקוריות</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-            מבחר עבודות מקוריות מבלוג &quot;מהראש אל הדף&quot; — קומיקסים, איורים,
-            קריקטורות ועוד. כולן נוצרו ישירות על ידי אלעד יעקובוביץ&apos;.
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8 text-pretty">
+            מבחר מתוך הארכיון של בלוג האיור{" "}
+            <span className="font-bold">&quot;מהראש אל הדף&quot;</span> — קומיקסים,
+            איורים, קריקטורות, עיצוב דמויות ותפאורות תיאטרון. כל העבודות נוצרו
+            ישירות בידי אלעד יעקובוביץ&apos;.
           </p>
-
-          {/* Blog link */}
-          <a
-            href="https://meharoshelhadaf.blogspot.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-blue-600 font-bold hover:underline"
-          >
-            🔗 צפה בכל העבודות בבלוג המקורי &rarr;
-          </a>
         </motion.div>
 
         {/* Category filters */}
@@ -217,7 +296,7 @@ export default function Gallery() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: index * 0.05, duration: 0.4 }}
+              transition={{ delay: (index % 8) * 0.05, duration: 0.4 }}
               whileHover={{ y: -5, transition: { duration: 0.15 } }}
               className="group bg-white rounded-xl comic-border overflow-hidden cursor-pointer"
               onClick={() => setLightboxItem(item)}
@@ -254,21 +333,22 @@ export default function Gallery() {
           ))}
         </div>
 
-        {/* Wide gallery image */}
+        {/* Link to original blog */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-10 rounded-2xl overflow-hidden comic-border"
+          transition={{ duration: 0.5 }}
+          className="mt-10 text-center"
         >
-          <Image
-            src="/images/gallery-wide.jpg"
-            alt="תערוכת קומיקס ואיורים — גלריה רחבה"
-            width={1200}
-            height={675}
-            className="w-full h-auto object-cover"
-          />
+          <a
+            href="https://meharoshelhadaf.blogspot.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-blue-600 font-bold hover:underline"
+          >
+            🔗 הבלוג המקורי — מהראש אל הדף &rarr;
+          </a>
         </motion.div>
 
         {/* CTA */}

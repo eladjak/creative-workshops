@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://workshops.eladjak.com/sitemap.xml",
+    sitemap: "https://creative-workshops.vercel.app/sitemap.xml",
   };
 }
