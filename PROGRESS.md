@@ -1,7 +1,14 @@
 # creative-workshops - Progress
 
-## Status: Production Complete
-## Last Updated: 2026-04-10
+## 2026-06-09 — eladjak.com overhaul: blog scrape + image fix (comics)
+- Mega-scraped the old blog (meharoshelhadaf.blogspot.com) → embedded 28 works + 15 real photos into the modern page. Wrong/mismatched images replaced.
+- Live: **https://creative-workshops.vercel.app** (HTTP 200 via VPS). SSR audit: 1 H1, 2 JSON-LD blocks, canonical present, custom favicon (32x32). robots/sitemap/llms.txt all 200.
+- ⚠️ NEEDS ELAD: Vercel project has ZERO production env vars → **RESEND_API_KEY missing** → contact form logs only (no email delivered). Add RESEND_API_KEY + RESEND_FROM (`comics@eladjak.com`) + CONTACT_EMAIL (`eladjak@gmail.com`).
+- Optional: dedicated comics.eladjak.com subdomain (currently on vercel.app default).
+- Git clean, on main, pushed.
+
+## Status: Production Complete (overhaul Jun 9) — pending RESEND key
+## Last Updated: 2026-06-09
 
 ## Live URLs
 - https://workshops.eladjak.com (subdomain)
