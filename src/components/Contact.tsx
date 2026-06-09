@@ -40,8 +40,18 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Send the lead by email via Resend (server route). Non-blocking — we still
+    // open WhatsApp so the user always has an instant channel.
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    }).catch(() => {
+      /* email is best-effort; WhatsApp below is the guaranteed channel */
+    });
+
     const message = [
       `שם: ${formData.name}`,
       `טלפון: ${formData.phone}`,
