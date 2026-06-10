@@ -51,35 +51,71 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Credentials */}
+          {/* Links & Credentials */}
           <div>
-            <h4 className="font-black mb-4">ניסיון ופרסומים</h4>
+            <h4 className="font-black mb-4">קישורים ופרסומים</h4>
             <div className="space-y-2 text-sm text-gray-400">
-              <div className="flex items-center gap-2">
+              <a
+                href="/about"
+                className="flex items-center gap-2 hover:text-white transition-colors"
+              >
+                <span>👋</span>
+                <span>אודות אלעד</span>
+              </a>
+              <a
+                href="https://meharoshelhadaf.blogspot.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-white transition-colors"
+              >
+                <span>🖼️</span>
+                <span>מהראש אל הדף — הבלוג</span>
+              </a>
+              <a
+                href="https://www.youtube.com/@MeirTV"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-white transition-colors"
+              >
                 <span>📺</span>
                 <span>ערוץ מאיר — סדנת ציור מצולמת</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span>📚</span>
-                <span>מקור לילדים — 42 פרקים</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span>🎨</span>
-                <span>85+ עבודות מקוריות</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span>🖼️</span>
-                <span>
-                  <a
-                    href="https://meharoshelhadaf.blogspot.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-white transition-colors underline"
-                  >
-                    מהראש אל הדף — הבלוג
-                  </a>
-                </span>
-              </div>
+              </a>
+              <a
+                href="https://www.facebook.com/eladjak"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-white transition-colors"
+              >
+                <span>📘</span>
+                <span>פייסבוק</span>
+              </a>
+              <a
+                href="https://teatron.eladjak.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-white transition-colors"
+              >
+                <span>🎭</span>
+                <span>תפאורה לתיאטרון סצנה</span>
+              </a>
+              <a
+                href="https://www.eladjak.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-white transition-colors"
+              >
+                <span>🌐</span>
+                <span>אלעד יעקובוביץ&apos; — האתר האישי</span>
+              </a>
+              <a
+                href="https://fullstack-eladjak.co.il"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-white transition-colors"
+              >
+                <span>💻</span>
+                <span>פורטפוליו מקצועי</span>
+              </a>
             </div>
           </div>
         </div>

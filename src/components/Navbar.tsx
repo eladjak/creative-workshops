@@ -10,6 +10,7 @@ const navLinks = [
   { href: "#curriculum", label: "תכנית לימודים" },
   { href: "#for-who", label: "למי מתאים" },
   { href: "#testimonials", label: "המלצות" },
+  { href: "/about", label: "אודות" },
   { href: "#contact", label: "צור קשר" },
 ];
 
