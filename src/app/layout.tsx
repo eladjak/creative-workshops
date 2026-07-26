@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Heebo } from "next/font/google";
 import "./globals.css";
+import { MotionProvider } from "@/components/MotionProvider";
 
 const heebo = Heebo({
   variable: "--font-heebo",
@@ -172,7 +173,7 @@ export default function RootLayout({
         >
           דלג לתוכן הראשי
         </a>
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );
