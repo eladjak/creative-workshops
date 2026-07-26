@@ -16,8 +16,9 @@ export async function POST(req: Request) {
     if (!Array.isArray(messages) || messages.length === 0) return NextResponse.json({ error: "messages array required" }, { status: 400 })
     // Spend guard: public unauthenticated endpoint on Elad's own Gemini key.
     // Checked after body validation so malformed traffic cannot burn budget.
-    if (!aiGuard(req).ok) {
-      return NextResponse.json({ content: "הצ'אט עמוס כרגע — אפשר לנסות שוב בעוד רגע, או לשלוח פרטים דרך הטופס ונחזור אליך." })
+    const _guard = await aiGuard(req, "creative-workshops");
+    if (!_guard.ok) {
+      return NextResponse.json({ content: "העוזר עמוס כרגע — אפשר לנסות שוב מאוחר יותר, או להשאיר פרטים בטופס ונחזור אליכם." });
     }
     const recent = messages.slice(-10)
     const conversationText = recent.map((m: { role: string; content: string }) => `${m.role === "user" ? "משתמש" : "אסיסטנט"}: ${m.content}`).join("\n")
