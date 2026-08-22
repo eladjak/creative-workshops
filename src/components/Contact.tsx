@@ -21,6 +21,25 @@ const workshopTypes = [
   "לא החלטתי עדיין",
 ];
 
+// Visual order, so focus lands on the first field on the page rather than the
+// first key that happened to be validated.
+const FIELD_ORDER = ["name", "phone", "email"] as const;
+
+function FieldError({ id, message }: { id: string; message?: string }) {
+  // Always rendered, never conditionally mounted.
+  return (
+    <p id={id} aria-live="polite" className="mt-1 min-h-5 text-sm text-red-600">
+      {message ? (
+        <>
+          {/* a mark as well as the colour */}
+          <span aria-hidden="true">✕ </span>
+          {message}
+        </>
+      ) : null}
+    </p>
+  );
+}
+
 export default function Contact() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -31,17 +50,49 @@ export default function Contact() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitNotice, setSubmitNotice] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: e.target.value }));
+    setErrors((prev) => (prev[name] ? { ...prev, [name]: "" } : prev));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // noValidate is set on the form below, so the browser checks nothing. That
+    // is deliberate: without it the browser blocks first, onSubmit never runs,
+    // and this validation would be dead code. What the browser cannot do is
+    // leave anything in the DOM to point aria-describedby at, and its bubble
+    // follows the visitor's browser locale rather than this page's lang=he --
+    // an English-locale visitor gets an English error on a Hebrew form.
+    const errs: Record<string, string> = {};
+    if (!formData.name.trim()) errs.name = "צריך למלא שם מלא";
+    if (!formData.phone.trim()) errs.phone = "צריך למלא טלפון";
+    else if (!/^[\d\s()+-]{9,}$/.test(formData.phone.trim()))
+      errs.phone = "מספר הטלפון לא נראה תקין";
+    if (formData.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim()))
+      errs.email = "כתובת האימייל לא נראית תקינה";
+
+    setErrors(errs);
+    if (Object.keys(errs).length > 0) {
+      const first = FIELD_ORDER.find((f) => errs[f]);
+      if (first) {
+        const n = Object.keys(errs).length;
+        setSubmitNotice(
+          `הטופס לא נשלח. ${n === 1 ? "יש שדה אחד שצריך תיקון" : `יש ${n} שדות שצריכים תיקון`}: ${errs[first]}`
+        );
+        document.getElementById(`cw-${first}`)?.focus();
+      }
+      return;
+    }
+    setSubmitNotice("");
     // Send the lead by email via Resend (server route). Non-blocking — we still
     // open WhatsApp so the user always has an instant channel.
     fetch("/api/contact", {
@@ -228,7 +279,13 @@ export default function Contact() {
               <form
                 onSubmit={handleSubmit}
                 className="bg-white rounded-2xl comic-border p-8"
+                noValidate
               >
+                {/* Mounted before it ever has content: a live region inserted
+                    at the same moment as its text is often not announced. */}
+                <p aria-live="assertive" className="sr-only">
+                  {submitNotice}
+                </p>
                 <h3 className="font-black text-2xl text-gray-900 mb-6">
                   שלחו לנו הצעה 🎨
                 </h3>
@@ -241,13 +298,18 @@ export default function Contact() {
                       </label>
                       <input
                         type="text"
+                        id="cw-name"
                         name="name"
                         required
+                        aria-required="true"
+                        aria-invalid={errors.name ? true : undefined}
+                        aria-describedby="cw-name-error"
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="ישראל ישראלי"
                         className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition-colors"
                       />
+                        <FieldError id="cw-name-error" message={errors.name} />
                     </div>
                     <div>
                       <label className="block text-sm font-bold text-gray-700 mb-1">
@@ -255,14 +317,19 @@ export default function Contact() {
                       </label>
                       <input
                         type="tel"
+                        id="cw-phone"
                         name="phone"
                         required
+                        aria-required="true"
+                        aria-invalid={errors.phone ? true : undefined}
+                        aria-describedby="cw-phone-error"
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="050-0000000"
                         className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition-colors"
                         dir="ltr"
                       />
+                        <FieldError id="cw-phone-error" message={errors.phone} />
                     </div>
                   </div>
 
@@ -272,13 +339,17 @@ export default function Contact() {
                     </label>
                     <input
                       type="email"
-                      name="email"
+                      id="cw-email"
+                        name="email"
+                        aria-invalid={errors.email ? true : undefined}
+                        aria-describedby="cw-email-error"
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="you@school.edu"
                       className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition-colors"
                       dir="ltr"
                     />
+                      <FieldError id="cw-email-error" message={errors.email} />
                   </div>
 
                   <div>
