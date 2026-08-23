@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { aiGuard } from "@/lib/ai-guard"
 
 const SYSTEM_PROMPT = `אתה צ'אטבוט באתר ׳מהראש אל הדף׳ - סדנאות קומיקס, איור ואנימציה לילדים ובני נוער של אלעד יעקובוביץ'.
 
@@ -13,6 +14,12 @@ export async function POST(req: Request) {
     const body = await req.json()
     const messages = body?.messages || []
     if (!Array.isArray(messages) || messages.length === 0) return NextResponse.json({ error: "messages array required" }, { status: 400 })
+    // Spend guard: public unauthenticated endpoint on Elad's own Gemini key.
+    // Checked after body validation so malformed traffic cannot burn budget.
+    const _guard = await aiGuard(req, "creative-workshops");
+    if (!_guard.ok) {
+      return NextResponse.json({ content: "העוזר עמוס כרגע — אפשר לנסות שוב מאוחר יותר, או להשאיר פרטים בטופס ונחזור אליכם." });
+    }
     const recent = messages.slice(-10)
     const conversationText = recent.map((m: { role: string; content: string }) => `${m.role === "user" ? "משתמש" : "אסיסטנט"}: ${m.content}`).join("\n")
     const fullPrompt = `${SYSTEM_PROMPT}\n\nשיחה עד כה:\n${conversationText}\n\nאסיסטנט:`
